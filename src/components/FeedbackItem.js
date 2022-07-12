@@ -6,7 +6,10 @@ function FeedbackItem() {
   const [text, setText] = useState('This is an example of a feedback item text')
 
   const handleClick = () => {
-    setRating(2)
+    // refactor so setRating takes in a function when need to know the previous state
+    setRating((prev) => {
+      return prev + 1
+    }) 
   }
 
   return (
