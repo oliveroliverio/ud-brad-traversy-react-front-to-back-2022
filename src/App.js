@@ -20,7 +20,7 @@ function App() {
 			<h1>{title.toUpperCase()}</h1>
 			<p>{body}</p>
 
-			{showComments ? (
+			{showComments && (
 				<div className='comments'>
 					<h3>Comments ({comments.length})</h3>
 					<ul>
@@ -30,8 +30,6 @@ function App() {
 						<li></li>
 					</ul>
 				</div>
-			) : (
-				'no comments shown'
 			)}
 		</>
 	)
