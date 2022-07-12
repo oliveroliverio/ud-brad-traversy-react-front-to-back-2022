@@ -10,6 +10,9 @@ function App() {
 		{ id: 3, text: 'comment three' },
 	]
 
+	const loading = false
+	if (loading) return <h1>loading...</h1>
+
 	return (
 		<>
 			<h1>{title.toUpperCase()}</h1>
