@@ -1,10 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-function App(){
-  return (
-    <>
-      <h1>Boiler Plate Code Removed</h1>
-    </>
-  )
+function App() {
+	const title = 'Blog post!'
+	const body = 'This is my blog post!'
+	return (
+		<>
+			<h1>{title}</h1>
+			<p>{body}</p>
+		</>
+	)
 }
-export default App;
+export default App
