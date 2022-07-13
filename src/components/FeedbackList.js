@@ -1,7 +1,8 @@
 import React from "react";
-import FeedbackItem from "./FeedbackItem";
+import FeedbackItem from "./FeedbackItem"
+import PropTypes from 'prop-types'
 
-export default function FeedbackList({ feedback }) {
+function FeedbackList({ feedback }) {
   // conditionally show feed back if empty case
   // if no feedback or feed back is zero
 
@@ -16,3 +17,16 @@ export default function FeedbackList({ feedback }) {
     ))}
   </div>;
 }
+
+FeedbackList.propTypes = {
+  feedback: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    
+    })
+  )
+}
+
+export default FeedbackList
