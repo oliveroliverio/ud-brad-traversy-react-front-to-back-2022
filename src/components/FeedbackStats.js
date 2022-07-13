@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function FeedbackStats({ feedback }) {
   let avg =
@@ -18,5 +19,9 @@ function FeedbackStats({ feedback }) {
     </div>
   );
 }
+
+FeedbackStats.propTypes = {
+  feedback: PropTypes.array.isRequired,
+};
 
 export default FeedbackStats;
