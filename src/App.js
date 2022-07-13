@@ -9,7 +9,11 @@ import FeedbackData from "./data/FeedbackData";
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
   const deleteFeedback = (id) => {
-    console.log("App", id);
+    if (window.confirm("Are you sure you want to delete?")) {
+      // set feedback to new array filtering the item with the id that user clicked on
+      // keep all the items that DON"T match the id (clicked)
+      setFeedback(feedback.filter((item) => item.id !== id));
+    }
   };
   return (
     <>
