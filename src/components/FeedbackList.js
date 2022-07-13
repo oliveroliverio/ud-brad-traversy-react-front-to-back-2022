@@ -1,4 +1,5 @@
 import React from "react";
+import FeedbackItem from "./FeedbackItem";
 
 export default function FeedbackList({ feedback }) {
   // conditionally show feed back if empty case
@@ -9,7 +10,7 @@ export default function FeedbackList({ feedback }) {
 
   return <div className='feedback-list'>
     {feedback.map((i, index) => (
-      <div>{i.rating}, {index}</div>
+      <FeedbackItem key={i.id} item={i}></FeedbackItem>
     ))}
   </div>;
 }
