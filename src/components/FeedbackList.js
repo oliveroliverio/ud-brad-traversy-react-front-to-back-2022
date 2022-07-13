@@ -3,7 +3,9 @@ import FeedbackItem from "./FeedbackItem";
 
 export default function FeedbackList({ feedback }) {
   // conditionally show feed back if empty case
-  // if no feedback or
+  // if no feedback or feed back is zero
+
+  // Note right now, data is hardcoded 
   if (!feedback || feedback.length === 0) {
     return <p>No Feedback yet</p>
   }
