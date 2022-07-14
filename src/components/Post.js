@@ -1,13 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 
 function Post() {
-  const params = useParams();
+  const status = 404;
+
+  if (status === 404) {
+    return <Navigate to='/notfound ' />;
+  }
+
   return (
-    // now I want to show the slug or ID of the post
-    // a more common use case is have the slug/id passed in programmatically {slug/id} then make a request to a backend to get that specific post
     <div>
-      <h1>Post {params.slug}</h1>
+      <h1>Post</h1>
     </div>
   );
 }
