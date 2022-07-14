@@ -20,7 +20,8 @@ function App() {
   };
   const addFeedback = (newFeedback) => {
     newFeedback.id = uuidv4();
-    console.log(newFeedback);
+    // here's the different part, you want to add to the array, not overwrite
+    setFeedback([newFeedback, ...feedback]);
   };
   return (
     <>
