@@ -12,10 +12,16 @@ export const FeedbackProvider = ({ children }) => {
       rating: 10,
     },
   ]);
+  // now to use deleteFeedback in component, need to pass it into a value like we did a component
+  const deleteFeedback = (id) => {
+    setFeedback(feedback.filter((item) => item.id !== id));
+  };
   return (
     <FeedbackContext.Provider
       value={{
         feedback,
+        // now go back to app.js and refactor
+        deleteFeedback,
       }}
     >
       {/* chilren are the components we wrap around FeedbackProvider 

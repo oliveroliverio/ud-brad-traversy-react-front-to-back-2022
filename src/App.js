@@ -22,14 +22,7 @@ import Card from './components/shared/Card';
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
-  const deleteFeedback = (id) => {
-    // if (window.confirm("Are you sure you want to delete?")) {
-    //   // set feedback to new array filtering the item with the id that user clicked on
-    //   // keep all the items that DON"T match the id (clicked)
-    //   setFeedback(feedback.filter((item) => item.id !== id));
-    // }
-    setFeedback(feedback.filter((item) => item.id !== id));
-  };
+
   const addFeedback = (newFeedback) => {
     newFeedback.id = uuidv4();
     // here's the different part, you want to add to the array, not overwrite
@@ -48,7 +41,7 @@ function App() {
                 <>
                   <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
                   <FeedbackStats></FeedbackStats>
-                  <FeedbackList handleDelete={deleteFeedback} />
+                  <FeedbackList />
                 </>
               }
             ></Route>
