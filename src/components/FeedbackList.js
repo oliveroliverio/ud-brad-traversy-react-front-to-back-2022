@@ -12,6 +12,7 @@ function FeedbackList({ handleDelete }) {
   return (
     <div className='feedback-list'>
       <AnimatePresence>
+        {/* feedback now coming from FeedbackContext, NOT app.js file */}
         {feedback.map((i, index) => (
           <motion.div
             key={i.id}
