@@ -24,9 +24,27 @@ function FeedbackForm() {
     }
     setText(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    // since it's a form submit need to prevent default and refreshing page
+    e.preventDefault();
+    // double checking text requirements since there's ways around it in chrome
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+      // note, the above is shorthand for
+      // const newFeedback = {
+      //   text: text,
+      //   rating: rating,
+      // }
+      console.log(newFeedback);
+    }
+  };
   return (
     <Card reverse={false}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
         <RatingSelect select={(rating) => setRating(rating)}></RatingSelect>
         <div className='input-group'>
