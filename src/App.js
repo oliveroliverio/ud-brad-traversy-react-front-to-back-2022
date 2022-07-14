@@ -4,6 +4,7 @@ import FeedbackList from './components/FeedbackList';
 import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
+import { v4 as uuidv4 } from 'uuid';
 
 // global level state vs component level state
 
@@ -18,6 +19,7 @@ function App() {
     setFeedback(feedback.filter((item) => item.id !== id));
   };
   const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4();
     console.log(newFeedback);
   };
   return (
