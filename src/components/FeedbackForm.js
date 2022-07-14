@@ -28,7 +28,7 @@ function FeedbackForm() {
     <Card reverse={false}>
       <form>
         <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={(rating) => console.log(rating)}></RatingSelect>
+        <RatingSelect select={(rating) => setRating(rating)}></RatingSelect>
         <div className='input-group'>
           <input
             value={text}
