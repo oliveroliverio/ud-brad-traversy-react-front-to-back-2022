@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,24 +10,18 @@ import FeedbackList from './components/FeedbackList';
 import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
-import { v4 as uuidv4 } from 'uuid';
+
 import AboutPage from './pages/AboutPage';
 import { FeedbackProvider } from './context/FeedbackContext';
 import AboutIconLink from './components/AboutIconLink';
 import Card from './components/shared/Card';
+
 // import Post from './components/Post';
 
 // This is ok, but we'd like to move towards a global context/global state, where we can easily pass state to components through context rather than through complicated prop drilling
 // This is a better way to store and manage our global state, which in our case is our FeedbackItems
 
 function App() {
-  const [feedback, setFeedback] = useState(FeedbackData);
-
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    // here's the different part, you want to add to the array, not overwrite
-    setFeedback([newFeedback, ...feedback]);
-  };
   return (
     <FeedbackProvider>
       <Router>
@@ -39,7 +33,7 @@ function App() {
               path='/'
               element={
                 <>
-                  <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
+                  <FeedbackForm></FeedbackForm>
                   <FeedbackStats></FeedbackStats>
                   <FeedbackList />
                 </>
