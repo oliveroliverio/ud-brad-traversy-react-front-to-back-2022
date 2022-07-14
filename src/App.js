@@ -12,6 +12,7 @@ import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
+import { FeedbackProvider } from './context/FeedbackContext';
 import AboutIconLink from './components/AboutIconLink';
 import Card from './components/shared/Card';
 // import Post from './components/Post';
@@ -35,42 +36,44 @@ function App() {
     setFeedback([newFeedback, ...feedback]);
   };
   return (
-    <Router>
-      <Header text='hello world'></Header>
-      <div className='container'>
-        <Routes>
-          <Route
-            exact
-            path='/'
-            element={
-              <>
-                <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
-                <FeedbackStats feedback={feedback}></FeedbackStats>
-                <FeedbackList
-                  handleDelete={deleteFeedback}
-                  feedback={feedback}
-                />
-              </>
-            }
-          ></Route>
-          <Route path='/about' element={<AboutPage />}>
-            About Page
-          </Route>
-          {/* <Route path='/post/*' element={<Post />}>
+    <FeedbackProvider>
+      <Router>
+        <Header text='hello world'></Header>
+        <div className='container'>
+          <Routes>
+            <Route
+              exact
+              path='/'
+              element={
+                <>
+                  <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
+                  <FeedbackStats feedback={feedback}></FeedbackStats>
+                  <FeedbackList
+                    handleDelete={deleteFeedback}
+                    feedback={feedback}
+                  />
+                </>
+              }
+            ></Route>
+            <Route path='/about' element={<AboutPage />}>
+              About Page
+            </Route>
+            {/* <Route path='/post/*' element={<Post />}>
             Post
           </Route> */}
-        </Routes>
-      </div>
-      <AboutIconLink></AboutIconLink>
-      <Card>
-        <NavLink to='/' activeClassName='active'>
-          Home
-        </NavLink>
-        <NavLink to='/about' activeClassName='active'>
-          About
-        </NavLink>
-      </Card>
-    </Router>
+          </Routes>
+        </div>
+        <AboutIconLink></AboutIconLink>
+        <Card>
+          <NavLink to='/' activeClassName='active'>
+            Home
+          </NavLink>
+          <NavLink to='/about' activeClassName='active'>
+            About
+          </NavLink>
+        </Card>
+      </Router>
+    </FeedbackProvider>
   );
 }
 export default App;
