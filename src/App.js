@@ -14,9 +14,9 @@ import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
 import Card from './components/shared/Card';
-import Post from './components/Post';
+// import Post from './components/Post';
 
-// global level state vs component level state
+// This is ok, but we'd like to move towards a global context/global state, where we can easily pass state to components through context rather than through complicated prop drilling
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
@@ -55,9 +55,9 @@ function App() {
           <Route path='/about' element={<AboutPage />}>
             About Page
           </Route>
-          <Route path='/post/*' element={<Post />}>
+          {/* <Route path='/post/*' element={<Post />}>
             Post
-          </Route>
+          </Route> */}
         </Routes>
       </div>
       <AboutIconLink></AboutIconLink>
