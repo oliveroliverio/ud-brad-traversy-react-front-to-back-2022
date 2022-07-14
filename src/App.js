@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackData from './data/FeedbackData';
@@ -29,14 +29,23 @@ function App() {
     <Router>
       <Header text='hello world'></Header>
       <div className='container'>
-        <Route exact path='/'>
-          <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
-          <FeedbackStats feedback={feedback}></FeedbackStats>
-          <FeedbackList handleDelete={deleteFeedback} feedback={feedback} />
-        </Route>
-        <Route path='/about' component={AboutPage}>
-          This is the about route
-        </Route>
+        <Routes>
+          <Route
+            exact
+            path='/'
+            element={
+              <>
+                <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
+                <FeedbackStats feedback={feedback}></FeedbackStats>
+                <FeedbackList
+                  handleDelete={deleteFeedback}
+                  feedback={feedback}
+                />
+              </>
+            }
+          ></Route>
+          <Route path='/about' element={<AboutPage />}></Route>
+        </Routes>
       </div>
     </Router>
   );
