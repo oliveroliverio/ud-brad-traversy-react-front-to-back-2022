@@ -7,6 +7,7 @@ import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
+import { AboutIconLink } from 'react-icons/fa';
 
 // global level state vs component level state
 
@@ -44,7 +45,9 @@ function App() {
               </>
             }
           ></Route>
-          <Route path='/about' element={<AboutPage />}></Route>
+          <Route path='/about' element={<AboutPage />}>
+            About Page
+          </Route>
         </Routes>
       </div>
     </Router>
