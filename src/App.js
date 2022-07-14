@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import { v4 as uuidv4 } from 'uuid';
+import AboutPage from './pages/AboutPage';
 
 // global level state vs component level state
 
@@ -24,17 +26,19 @@ function App() {
     setFeedback([newFeedback, ...feedback]);
   };
   return (
-    <>
+    <Router>
       <Header text='hello world'></Header>
       <div className='container'>
-        <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
-        <FeedbackStats feedback={feedback}></FeedbackStats>
-        <FeedbackList
-          handleDelete={deleteFeedback}
-          feedback={feedback}
-        ></FeedbackList>
+        <Route exact path='/'>
+          <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
+          <FeedbackStats feedback={feedback}></FeedbackStats>
+          <FeedbackList handleDelete={deleteFeedback} feedback={feedback} />
+        </Route>
+        <Route path='/about' component={AboutPage}>
+          This is the about route
+        </Route>
       </div>
-    </>
+    </Router>
   );
 }
 export default App;
