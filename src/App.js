@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
 import Card from './components/shared/Card';
+import Post from './components/Post';
 
 // global level state vs component level state
 
@@ -53,6 +54,9 @@ function App() {
           ></Route>
           <Route path='/about' element={<AboutPage />}>
             About Page
+          </Route>
+          <Route path='/post/:slug' element={<Post />}>
+            Post
           </Route>
         </Routes>
       </div>
