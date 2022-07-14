@@ -9,6 +9,17 @@ function FeedbackForm() {
 
   // set as arrow function that takes in an event paramter
   const handleTextChange = (e) => {
+    if (text === '') {
+      setBtnDisabled(true);
+      setMessage(null);
+      // see if text contains something and is at least 10 characters
+    } else if (text !== '' && text.trim().length <= 10) {
+      setBtnDisabled(true);
+      setMessage('Entry needs to be more than 10 characters');
+    } else {
+      setMessage(null);
+      setBtnDisabled(false);
+    }
     setText(e.target.value);
   };
   return (
@@ -27,6 +38,7 @@ function FeedbackForm() {
             Send
           </Button>
         </div>
+        {message && <div className='message'>{message}</div>}
       </form>
     </Card>
   );
