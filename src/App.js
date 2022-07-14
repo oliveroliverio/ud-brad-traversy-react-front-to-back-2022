@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
+import FeedbackForm from "./components/FeedbackForm";
 
 // global level state vs component level state
 
@@ -22,6 +23,8 @@ function App() {
       <div className="container">
         <h1>My app</h1>
       </div>
+
+      <FeedbackForm></FeedbackForm>
       <FeedbackStats feedback={feedback}></FeedbackStats>
       <FeedbackList
         handleDelete={deleteFeedback}
