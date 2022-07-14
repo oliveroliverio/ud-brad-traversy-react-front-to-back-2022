@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, Routes, Route } from 'react-router-dom';
 
 function Post() {
   const status = 200;
@@ -21,6 +21,20 @@ function Post() {
       <button onClick={onClick} className='ui button'>
         Redirect Button
       </button>
+      <Routes>
+        <Route
+          path='/show'
+          element={
+            <>
+              <h1>Redirect to nested elements.</h1>
+              <p>
+                Useful if there's something specific you want to use when user
+                gets to localhost:3000/post/show
+              </p>
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }

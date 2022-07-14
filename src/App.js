@@ -55,7 +55,7 @@ function App() {
           <Route path='/about' element={<AboutPage />}>
             About Page
           </Route>
-          <Route path='/post' element={<Post />}>
+          <Route path='/post/*' element={<Post />}>
             Post
           </Route>
         </Routes>
