@@ -6,7 +6,7 @@ function FeedbackForm() {
 
   // set as arrow function that takes in an event paramter
   const handleTextChange = (e) => {
-    console.log(e.target.value);
+    setText(e.target.value);
   };
   return (
     <Card reverse={false}>
@@ -15,6 +15,7 @@ function FeedbackForm() {
         {/* @todo - rating select component */}
         <div className="input-group">
           <input
+            value={text}
             onChange={handleTextChange}
             type="text"
             placeholder="Write a review"
