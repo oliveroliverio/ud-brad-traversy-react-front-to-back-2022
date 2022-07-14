@@ -6,8 +6,14 @@ function AboutIconLink() {
   return (
     // this class positions it to bottom left corner
     <div className='about-link'>
-      {/* <a></a> tags are fine when linking offsite, but not for internal pages */}
-      <Link to='/about'>
+      {/* more advanced link to: query params */}
+      <Link
+        to={{
+          pathname: '/about',
+          search: '?sort=name',
+          hash: '#hello',
+        }}
+      >
         <FaQuestion size={30}></FaQuestion>
       </Link>
     </div>
