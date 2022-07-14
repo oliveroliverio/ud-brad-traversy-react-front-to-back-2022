@@ -8,6 +8,8 @@ function Post() {
     // a more common use case is have the slug/id passed in programmatically {slug/id} then make a request to a backend to get that specific post
     <div>
       <h1>Post {params.slug}</h1>
+      <p>Name: {params.name}</p>
+      <p>ID: {params.id}</p>
     </div>
   );
 }

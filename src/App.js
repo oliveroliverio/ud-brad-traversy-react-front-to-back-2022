@@ -55,7 +55,7 @@ function App() {
           <Route path='/about' element={<AboutPage />}>
             About Page
           </Route>
-          <Route path='/post/:slug' element={<Post />}>
+          <Route path='/post/:slug/:id/:name' element={<Post />}>
             Post
           </Route>
         </Routes>
