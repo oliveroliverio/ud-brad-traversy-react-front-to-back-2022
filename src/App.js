@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import FeedbackList from "./components/FeedbackList";
-import FeedbackData from "./data/FeedbackData";
-import FeedbackStats from "./components/FeedbackStats";
-import FeedbackForm from "./components/FeedbackForm";
+import React, { useState } from 'react';
+import Header from './components/Header';
+import FeedbackList from './components/FeedbackList';
+import FeedbackData from './data/FeedbackData';
+import FeedbackStats from './components/FeedbackStats';
+import FeedbackForm from './components/FeedbackForm';
 
 // global level state vs component level state
 
@@ -17,19 +17,20 @@ function App() {
     // }
     setFeedback(feedback.filter((item) => item.id !== id));
   };
+  const addFeedback = (newFeedback) => {
+    console.log(newFeedback);
+  };
   return (
     <>
-      <Header text="hello world"></Header>
-      <div className="container">
-        <h1>My app</h1>
+      <Header text='hello world'></Header>
+      <div className='container'>
+        <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
+        <FeedbackStats feedback={feedback}></FeedbackStats>
+        <FeedbackList
+          handleDelete={deleteFeedback}
+          feedback={feedback}
+        ></FeedbackList>
       </div>
-
-      <FeedbackForm></FeedbackForm>
-      <FeedbackStats feedback={feedback}></FeedbackStats>
-      <FeedbackList
-        handleDelete={deleteFeedback}
-        feedback={feedback}
-      ></FeedbackList>
     </>
   );
 }
