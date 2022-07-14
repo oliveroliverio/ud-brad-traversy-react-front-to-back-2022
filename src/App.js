@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from 'react-router-dom';
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackData from './data/FeedbackData';
@@ -8,6 +13,7 @@ import FeedbackForm from './components/FeedbackForm';
 import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
+import Card from './components/shared/Card';
 
 // global level state vs component level state
 
@@ -51,6 +57,14 @@ function App() {
         </Routes>
       </div>
       <AboutIconLink></AboutIconLink>
+      <Card>
+        <NavLink to='/' activeClassName='active'>
+          Home
+        </NavLink>
+        <NavLink to='/about' activeClassName='active'>
+          About
+        </NavLink>
+      </Card>
     </Router>
   );
 }
