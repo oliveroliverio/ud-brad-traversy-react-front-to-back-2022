@@ -8,6 +8,7 @@ const FeedbackContext = createContext()
 // need to create a providor and wrap all the prop passing into it similar to how we wrapped everything in Router
 
 export const FeedbackProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true)
   const [feedback, setFeedback] = useState([])
 
   // need useEffect because we want to run this right when the component loads
@@ -21,6 +22,7 @@ export const FeedbackProvider = ({ children }) => {
     )
     const data = await response.json()
     setFeedback(data)
+    setIsLoading(false)
   }
 
   const addFeedback = (newFeedback) => {
@@ -62,6 +64,7 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         feedback,
         feedbackEditState,
+        isLoading,
         deleteFeedback,
         addFeedback,
         editFeedback,
