@@ -24,6 +24,11 @@
       "rating": "2",
       "text": "New additional feedback item from postman",
       "id": 6
+    },
+    {
+      "text": "New additional feedback entered in UI and persisting in json-server! ",
+      "rating": 8,
+      "id": 7
     }
   ]
 }
