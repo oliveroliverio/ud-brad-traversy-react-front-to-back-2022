@@ -13,6 +13,9 @@ function Navbar({ title }) {
           {/* inline padding right 2 because we're going to have text next to it */}
           {/* text-3xl makes it a little bigger */}
           <FaGithub className='inline pr-2 text-3xl' />
+          <Link to='/' className='text-lg font-bold align-middle'>
+            {title}
+          </Link>
         </div>
       </div>
     </nav>
