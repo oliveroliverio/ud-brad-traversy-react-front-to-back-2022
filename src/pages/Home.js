@@ -1,8 +1,10 @@
+import UserResults from '../components/users/UserResults'
+
 function Home() {
   return (
     <>
-      <h1 className='text-6xl'>Welcome</h1>
-      {process.env.REACT_APP_REACT_GITHUB_TOKEN}
+      {/* Search component goes here */}
+      <UserResults />
     </>
   )
 }
