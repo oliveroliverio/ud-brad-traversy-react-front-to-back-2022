@@ -6,7 +6,11 @@ function Navbar({ title }) {
   return (
     <nav className='navbar mb-12 shadow-lg bg-neutral text-neutral-content'>
       {/* auto margin left and right */}
-      <div className='container mx-auto'>Navbar</div>
+      <div className='container mx-auto'>
+        {/* add margin/padding on x-axis */}
+        {/* .flex-none.px-2.mx-2 */}
+        <div className='flex-none px-2 mx-2'>Navbar</div>
+      </div>
     </nav>
   )
 }
