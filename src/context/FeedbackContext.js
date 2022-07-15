@@ -20,7 +20,7 @@ export const FeedbackProvider = ({ children }) => {
       'http://localhost:5001/feedback?_sort=id&_order=desc'
     )
     const data = await response.json()
-    console.log(data)
+    setFeedback(data)
   }
 
   const addFeedback = (newFeedback) => {
