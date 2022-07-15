@@ -12,7 +12,9 @@ function App() {
     <Router>
       <div className='flex flex-col justify-between h-screen'>
         <Navbar />
-        <main>Content</main>
+        {/* have main content in a container so it's not all the way to the side */}
+        {/* emmet: main.container.mx-auto.px-3.pb-12 */}
+        <main className='container mx-auto px-3 pb-12'>Content</main>
         <Footer />
       </div>
     </Router>
