@@ -11,7 +11,8 @@ function FeedbackForm() {
 	const [btnDisabled, setBtnDisabled] = useState(true)
 	const [message, setMessage] = useState('')
 
-	const { addFeedback, feedbackEditState } = useContext(FeedbackContext)
+	const { addFeedback, feedbackEditState, updateFeedback } =
+		useContext(FeedbackContext)
 
 	useEffect(() => {
 		// check to see if something in feedbackEditState first
@@ -39,20 +40,18 @@ function FeedbackForm() {
 	}
 
 	const handleSubmit = (e) => {
-		// since it's a form submit need to prevent default and refreshing page
 		e.preventDefault()
-		// double checking text requirements since there's ways around it in chrome
 		if (text.trim().length > 10) {
 			const newFeedback = {
 				text,
 				rating,
 			}
-			// note, the above is shorthand for
-			// const newFeedback = {
-			//   text: text,
-			//   rating: rating,
-			// }
-			addFeedback(newFeedback)
+			if (feedbackEditState.edit === true) {
+				updateFeedback(feedbackEditState.item.id, newFeedback)
+			} else {
+				addFeedback(newFeedback)
+			}
+
 			setText('')
 		}
 	}

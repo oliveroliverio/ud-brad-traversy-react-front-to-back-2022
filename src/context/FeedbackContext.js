@@ -31,14 +31,21 @@ export const FeedbackProvider = ({ children }) => {
 			edit: true,
 		})
 	}
+
+	// update feedback item
+	const updateFeedback = (id, updItem) => {
+		console.log(id, updItem)
+	}
+
 	return (
 		<FeedbackContext.Provider
 			value={{
 				feedback,
+				feedbackEditState,
 				deleteFeedback,
 				addFeedback,
 				editFeedback,
-				feedbackEditState,
+				updateFeedback,
 			}}>
 			{/* chilren are the components we wrap around FeedbackProvider
      Any values like state or fucntions to use (used to be props) would be in value*/}
