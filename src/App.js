@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
 
+// create environment variable accessible anywhere (github API token)
+
 function App() {
   return (
     // emmet: .flex.flex-col.justify-between.h-screen
