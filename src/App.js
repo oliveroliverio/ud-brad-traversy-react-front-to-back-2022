@@ -2,9 +2,8 @@ import React from 'react'
 
 function App() {
   return (
-    <div className='bg-purple-500'>
-      <h1 className='text-xl'>Hello World</h1>
-      <button className='btn'>Click</button>
+    <div>
+      <h1>Hello World</h1>
     </div>
   )
 }
