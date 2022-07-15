@@ -55,13 +55,18 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   // update feedback item
-  const updateFeedback = (id, updItem) => {
-    // As soon as it's edited, call feedback array with newly updated item.
-    // Take current feedback array, call map, takes in an arrow function,
-    // For each feedbcack were calling 'item', is this item 'id' the same that was clicked?
-    // If yes, then spread operate each item and updated item, else (if it doesn't match the id that the user clicked, then just return current item)
+  const updateFeedback = async (id, updItem) => {
+    const response = await fetch(`/feedback/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updItem),
+    })
+
+    const data = await response.json
     setFeedback(
-      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
     )
   }
 

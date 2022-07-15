@@ -29,6 +29,11 @@
       "text": "New additional feedback entered in UI and persisting in json-server! ",
       "rating": 8,
       "id": 7
+    },
+    {
+      "text": "New feedback to update and checkout.   Now updated",
+      "rating": 9,
+      "id": 8
     }
   ]
 }
