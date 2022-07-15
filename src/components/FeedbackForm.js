@@ -1,73 +1,80 @@
-import React, { useState, useContext } from 'react';
-import Card from './shared/Card';
-import Button from './shared/Button';
-import RatingSelect from './RatingSelect';
-import FeedbackContext from '../context/FeedbackContext';
+import React, { useState, useContext, useEffect } from 'react'
+import Card from './shared/Card'
+import Button from './shared/Button'
+import RatingSelect from './RatingSelect'
+import FeedbackContext from '../context/FeedbackContext'
 
 // for each input in form, you need state
 function FeedbackForm() {
-  const { addFeedback } = useContext(FeedbackContext);
+	const [text, setText] = useState('')
+	const [rating, setRating] = useState('')
+	const [btnDisabled, setBtnDisabled] = useState(true)
+	const [message, setMessage] = useState('')
 
-  const [text, setText] = useState('');
-  const [rating, setRating] = useState('');
-  const [btnDisabled, setBtnDisabled] = useState(true);
-  const [message, setMessage] = useState('');
+	const { addFeedback, feedbackEditState } = useContext(FeedbackContext)
 
-  // set as arrow function that takes in an event paramter
-  const handleTextChange = (e) => {
-    if (text === '') {
-      setBtnDisabled(true);
-      setMessage(null);
-      // see if text contains something and is at least 10 characters
-    } else if (text !== '' && text.trim().length <= 10) {
-      setBtnDisabled(true);
-      setMessage('Entry needs to be more than 10 characters');
-    } else {
-      setMessage(null);
-      setBtnDisabled(false);
-    }
-    setText(e.target.value);
-  };
+	useEffect(() => {
+		console.log('hello')
+		// if blank, runs only once when component first renders
+		// if something here, it runs every time that thing changes
+		// called a side effect.  Now click on edit icon and see 'hello'
+	}, [feedbackEditState])
 
-  const handleSubmit = (e) => {
-    // since it's a form submit need to prevent default and refreshing page
-    e.preventDefault();
-    // double checking text requirements since there's ways around it in chrome
-    if (text.trim().length > 10) {
-      const newFeedback = {
-        text,
-        rating,
-      };
-      // note, the above is shorthand for
-      // const newFeedback = {
-      //   text: text,
-      //   rating: rating,
-      // }
-      addFeedback(newFeedback);
-      setText('');
-    }
-  };
-  return (
-    <Card reverse={false}>
-      <form onSubmit={handleSubmit}>
-        <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={(rating) => setRating(rating)}></RatingSelect>
-        <div className='input-group'>
-          <input
-            value={text}
-            onChange={handleTextChange}
-            type='text'
-            placeholder='Write a review'
-          />
-          <Button isDisabled={btnDisabled} type='submit'>
-            Send
-          </Button>
-        </div>
-        {message && <div className='message'>{message}</div>}
-      </form>
-    </Card>
-  );
+	// set as arrow function that takes in an event paramter
+	const handleTextChange = (e) => {
+		if (text === '') {
+			setBtnDisabled(true)
+			setMessage(null)
+			// see if text contains something and is at least 10 characters
+		} else if (text !== '' && text.trim().length <= 10) {
+			setBtnDisabled(true)
+			setMessage('Entry needs to be more than 10 characters')
+		} else {
+			setMessage(null)
+			setBtnDisabled(false)
+		}
+		setText(e.target.value)
+	}
+
+	const handleSubmit = (e) => {
+		// since it's a form submit need to prevent default and refreshing page
+		e.preventDefault()
+		// double checking text requirements since there's ways around it in chrome
+		if (text.trim().length > 10) {
+			const newFeedback = {
+				text,
+				rating,
+			}
+			// note, the above is shorthand for
+			// const newFeedback = {
+			//   text: text,
+			//   rating: rating,
+			// }
+			addFeedback(newFeedback)
+			setText('')
+		}
+	}
+	return (
+		<Card reverse={false}>
+			<form onSubmit={handleSubmit}>
+				<h2>How would you rate your service with us?</h2>
+				<RatingSelect select={(rating) => setRating(rating)}></RatingSelect>
+				<div className='input-group'>
+					<input
+						value={text}
+						onChange={handleTextChange}
+						type='text'
+						placeholder='Write a review'
+					/>
+					<Button isDisabled={btnDisabled} type='submit'>
+						Send
+					</Button>
+				</div>
+				{message && <div className='message'>{message}</div>}
+			</form>
+		</Card>
+	)
 }
 
-export default FeedbackForm;
+export default FeedbackForm
 //

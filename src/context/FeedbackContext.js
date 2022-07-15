@@ -14,7 +14,7 @@ export const FeedbackProvider = ({ children }) => {
 		setFeedback([newFeedback, ...feedback])
 	}
 
-	const [feedbackEdit, setFeedbackEdit] = useState({
+	const [feedbackEditState, setFeedbackEditState] = useState({
 		item: {},
 		// by default, false, if clicked, set to true (edit mode)
 		edit: false,
@@ -26,7 +26,7 @@ export const FeedbackProvider = ({ children }) => {
 
 	// set item to be updated
 	const editFeedback = (item) => {
-		setFeedbackEdit({
+		setFeedbackEditState({
 			item,
 			edit: true,
 		})
@@ -38,6 +38,7 @@ export const FeedbackProvider = ({ children }) => {
 				deleteFeedback,
 				addFeedback,
 				editFeedback,
+				feedbackEditState,
 			}}>
 			{/* chilren are the components we wrap around FeedbackProvider
      Any values like state or fucntions to use (used to be props) would be in value*/}
