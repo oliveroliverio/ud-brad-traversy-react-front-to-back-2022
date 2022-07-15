@@ -13,11 +13,9 @@ import AboutPage from './pages/AboutPage';
 import { FeedbackProvider } from './context/FeedbackContext';
 import AboutIconLink from './components/AboutIconLink';
 import Card from './components/shared/Card';
-
 // import Post from './components/Post';
 
-// This is ok, but we'd like to move towards a global context/global state, where we can easily pass state to components through context rather than through complicated prop drilling
-// This is a better way to store and manage our global state, which in our case is our FeedbackItems
+// yarn run build
 
 function App() {
   return (
