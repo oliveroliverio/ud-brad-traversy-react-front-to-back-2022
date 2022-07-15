@@ -10,7 +10,9 @@ function Navbar({ title }) {
         {/* add margin/padding on x-axis */}
         {/* emmet: .flex-none.px-2.mx-2 */}
         <div className='flex-none px-2 mx-2'>
-          <FaGithub />
+          {/* inline padding right 2 because we're going to have text next to it */}
+          {/* text-3xl makes it a little bigger */}
+          <FaGithub className='inline pr-2 text-3xl' />
         </div>
       </div>
     </nav>
