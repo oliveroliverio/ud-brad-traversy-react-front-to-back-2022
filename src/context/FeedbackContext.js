@@ -1,63 +1,78 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import FeedbackData from '../data/FeedbackData'
+// don't need this anymore, going to get from json-server
+// import FeedbackData from '../data/FeedbackData'
 
 const FeedbackContext = createContext()
 
 // need to create a providor and wrap all the prop passing into it similar to how we wrapped everything in Router
 
 export const FeedbackProvider = ({ children }) => {
-	const [feedback, setFeedback] = useState(FeedbackData)
+  const [feedback, setFeedback] = useState([])
 
-	const addFeedback = (newFeedback) => {
-		newFeedback.id = uuidv4()
-		setFeedback([newFeedback, ...feedback])
-	}
+  // need useEffect because we want to run this right when the component loads
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
 
-	const [feedbackEditState, setFeedbackEditState] = useState({
-		item: {},
-		// by default, false, if clicked, set to true (edit mode)
-		edit: false,
-	})
+  const fetchFeedback = async () => {
+    const response = await fetch(
+      'http://localhost:5001/feedback?_sort=id&_order=desc'
+    )
+    const data = await response.json()
+    console.log(data)
+  }
 
-	const deleteFeedback = (id) => {
-		setFeedback(feedback.filter((item) => item.id !== id))
-	}
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4()
+    setFeedback([newFeedback, ...feedback])
+  }
 
-	// set item to be updated
-	const editFeedback = (item) => {
-		setFeedbackEditState({
-			item,
-			edit: true,
-		})
-	}
+  const [feedbackEditState, setFeedbackEditState] = useState({
+    item: {},
+    // by default, false, if clicked, set to true (edit mode)
+    edit: false,
+  })
 
-	// update feedback item
-	const updateFeedback = (id, updItem) => {
-		// As soon as it's edited, call feedback array with newly updated item.
-		// Take current feedback array, call map, takes in an arrow function,
-		// For each feedbcack were calling 'item', is this item 'id' the same that was clicked?
-		// If yes, then spread operate each item and updated item, else (if it doesn't match the id that the user clicked, then just return current item)
-		setFeedback(
-			feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
-		)
-	}
+  const deleteFeedback = (id) => {
+    setFeedback(feedback.filter((item) => item.id !== id))
+  }
 
-	return (
-		<FeedbackContext.Provider
-			value={{
-				feedback,
-				feedbackEditState,
-				deleteFeedback,
-				addFeedback,
-				editFeedback,
-				updateFeedback,
-			}}>
-			{/* chilren are the components we wrap around FeedbackProvider
+  // set item to be updated
+  const editFeedback = (item) => {
+    setFeedbackEditState({
+      item,
+      edit: true,
+    })
+  }
+
+  // update feedback item
+  const updateFeedback = (id, updItem) => {
+    // As soon as it's edited, call feedback array with newly updated item.
+    // Take current feedback array, call map, takes in an arrow function,
+    // For each feedbcack were calling 'item', is this item 'id' the same that was clicked?
+    // If yes, then spread operate each item and updated item, else (if it doesn't match the id that the user clicked, then just return current item)
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+    )
+  }
+
+  return (
+    <FeedbackContext.Provider
+      value={{
+        feedback,
+        feedbackEditState,
+        deleteFeedback,
+        addFeedback,
+        editFeedback,
+        updateFeedback,
+      }}
+    >
+      {/* chilren are the components we wrap around FeedbackProvider
      Any values like state or fucntions to use (used to be props) would be in value*/}
-			{children}
-		</FeedbackContext.Provider>
-	)
+      {children}
+    </FeedbackContext.Provider>
+  )
 }
 
 export default FeedbackContext
