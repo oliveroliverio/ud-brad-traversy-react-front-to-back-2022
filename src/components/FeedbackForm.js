@@ -14,10 +14,12 @@ function FeedbackForm() {
 	const { addFeedback, feedbackEditState } = useContext(FeedbackContext)
 
 	useEffect(() => {
-		console.log('hello')
-		// if blank, runs only once when component first renders
-		// if something here, it runs every time that thing changes
-		// called a side effect.  Now click on edit icon and see 'hello'
+		// check to see if something in feedbackEditState first
+		if (feedbackEditState.edit === true) {
+			setBtnDisabled(false)
+			setText(feedbackEditState.item.text)
+			setRating(feedbackEditState.item.rating)
+		}
 	}, [feedbackEditState])
 
 	// set as arrow function that takes in an event paramter
