@@ -8,8 +8,10 @@ function Navbar({ title }) {
       {/* auto margin left and right */}
       <div className='container mx-auto'>
         {/* add margin/padding on x-axis */}
-        {/* .flex-none.px-2.mx-2 */}
-        <div className='flex-none px-2 mx-2'>Navbar</div>
+        {/* emmet: .flex-none.px-2.mx-2 */}
+        <div className='flex-none px-2 mx-2'>
+          <FaGithub />
+        </div>
       </div>
     </nav>
   )
