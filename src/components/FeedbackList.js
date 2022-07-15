@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
-import FeedbackItem from './FeedbackItem';
-import { motion, AnimatePresence } from 'framer-motion';
-import FeedbackContext from '../context/FeedbackContext';
+import React, { useContext } from 'react'
+import FeedbackItem from './FeedbackItem'
+import { motion, AnimatePresence } from 'framer-motion'
+import FeedbackContext from '../context/FeedbackContext'
 
 function FeedbackList() {
-  const { feedback } = useContext(FeedbackContext);
-  if (!feedback || feedback.length === 0) {
-    return <p>No Feedback yet</p>;
+  const { feedback, isLoading } = useContext(FeedbackContext)
+  if (!isLoading && (!feedback || feedback.length === 0)) {
+    return <p>No Feedback yet</p>
   }
 
-  return (
+  return isLoading ? (
+    <h3>Loading...</h3>
+  ) : (
     <div className='feedback-list'>
       <AnimatePresence>
         {/* feedback now coming from FeedbackContext, NOT app.js file */}
@@ -25,7 +27,7 @@ function FeedbackList() {
         ))}
       </AnimatePresence>
     </div>
-  );
+  )
 
   //Without animation
   // return (
@@ -41,4 +43,4 @@ function FeedbackList() {
   // );
 }
 
-export default FeedbackList;
+export default FeedbackList
