@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import Spinner from '../layout/Spinner'
 import UserItem from '../users/UserItem'
 import GithubContext from '../../context/github/GithubContext'
@@ -6,11 +6,7 @@ import GithubContext from '../../context/github/GithubContext'
 // refactor UserResults to bring in
 
 function UserResults() {
-  const { users, loading, fetchUsers } = useContext(GithubContext)
-  useEffect(() => {
-    // below was just for testing, this useEffect will be used for searching
-    fetchUsers()
-  }, [])
+  const { users, loading } = useContext(GithubContext)
 
   if (!loading) {
     return (
