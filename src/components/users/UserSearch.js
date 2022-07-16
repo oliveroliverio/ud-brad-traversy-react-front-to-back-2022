@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import GithubContext from '../../context/github/GithubContext'
 import React from 'react'
 
 function UserSearch() {
 	const [text, setText] = useState('')
+
+	const { users } = useContext(GithubContext)
 
 	const handleChange = (e) => setText(e.target.value)
 	const handleSubmit = (e) => {
@@ -42,10 +45,12 @@ function UserSearch() {
 					</div>
 				</form>
 			</div>
-			{/* Div containing clear button */}
-			<div>
-				<button className='btn btn-ghost btn-large'>Clear</button>
-			</div>
+			{/* this came from Github context */}
+			{users.length > 0 && (
+				<div>
+					<button className='btn btn-ghost btn-large'>Clear</button>
+				</div>
+			)}
 		</div>
 	)
 }
