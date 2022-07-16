@@ -13,7 +13,6 @@ function App() {
     // flex.flex-col: create flex column,
     // justify-between: align space in between each thing (navbar, main content, footer)
     // h-screen: take up entire screen height vertically
-
     <Router>
       <div className='flex flex-col justify-between h-screen'>
         <Navbar />
