@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function UserResults() {
-  // want this to execute right when component loads
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     fetchUsers()
   }, [])
@@ -15,7 +16,9 @@ function UserResults() {
     })
 
     const data = await response.json()
-    console.log(data)
+    setUsers(data)
+    console.log(users)
+    setLoading(false)
   }
   return <div>UserResults</div>
 }
