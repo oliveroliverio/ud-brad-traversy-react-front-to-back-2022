@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 function UserItem({ user: { login, avatar_url } }) {
   //
   return (
@@ -9,7 +10,12 @@ function UserItem({ user: { login, avatar_url } }) {
             <img src={avatar_url} alt='profile' />
           </div>
         </div>
-        <div className='card-title'>{login}</div>
+        <div>
+          <h2 className='card-title'>{login}</h2>
+          <Link className='text-base-content text-opacity-40' to='#'>
+            Visit Profile
+          </Link>
+        </div>
       </div>
     </div>
   )
