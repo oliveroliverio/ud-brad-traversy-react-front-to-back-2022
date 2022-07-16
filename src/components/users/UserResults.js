@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 
 function UserResults() {
   // want this to execute right when component loads
-  useEffect(() => {}, [])
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   // create fetchUsers async/await function to run within useEffect
   const fetchUsers = async () => {
