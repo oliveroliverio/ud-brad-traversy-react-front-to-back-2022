@@ -3,7 +3,19 @@ import React from 'react'
 
 function UserSearch() {
 	const [text, setText] = useState('')
+
 	const handleChange = (e) => setText(e.target.value)
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		// validation
+		if (text === '') {
+			alert('please enter something')
+		} else {
+			// @todo - search users
+
+			setText('')
+		}
+	}
 
 	return (
 		// in grid: search form + button -> one item. then clear button
@@ -11,7 +23,7 @@ function UserSearch() {
 		<div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8'>
 			{/* Div containing form */}
 			<div>
-				<form action=''>
+				<form onSubmit={handleSubmit}>
 					<div className='form-control'>
 						<div className='relative'>
 							<input
