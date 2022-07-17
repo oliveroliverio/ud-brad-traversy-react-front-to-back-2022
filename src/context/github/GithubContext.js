@@ -47,11 +47,11 @@ export const GithubProvider = ({ children }) => {
     if (response.status === 404) {
       window.location = '/notfound'
     } else {
-      const { item } = await response.json()
+      const { data } = await response.json()
 
       dispatch({
         type: 'GET_USER',
-        payload: item,
+        payload: data,
       })
     }
   }
