@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import Alert from './components/Alert'
 import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
@@ -23,6 +24,7 @@ function App() {
             {/* have main content in a container so it's not all the way to the side */}
             {/* emmet: main.container.mx-auto.px-3.pb-12 */}
             <main className='container mx-auto px-3 pb-12'>
+              <Alert />
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
