@@ -5,7 +5,7 @@ import React from 'react'
 function UserSearch() {
   const [text, setText] = useState('')
 
-  const { users, searchUsers } = useContext(GithubContext)
+  const { users, searchUsers, clearUsers } = useContext(GithubContext)
 
   const handleChange = (e) => setText(e.target.value)
   const handleSubmit = (e) => {
@@ -18,6 +18,11 @@ function UserSearch() {
       searchUsers(text)
       setText('')
     }
+  }
+
+  const handleClear = (e) => {
+    e.preventDefault()
+    clearUsers()
   }
 
   return (
@@ -49,7 +54,9 @@ function UserSearch() {
       {/* this came from Github context */}
       {users.length > 0 && (
         <div>
-          <button className='btn btn-ghost btn-large'>Clear</button>
+          <button onClick={handleClear} className='btn btn-ghost btn-large'>
+            Clear
+          </button>
         </div>
       )}
     </div>
