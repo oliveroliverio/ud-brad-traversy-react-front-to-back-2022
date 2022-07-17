@@ -20,11 +20,6 @@ function UserSearch() {
     }
   }
 
-  const handleClear = (e) => {
-    e.preventDefault()
-    clearUsers()
-  }
-
   return (
     // in grid: search form + button -> one item. then clear button
     // grid-cols-1: small screen
@@ -54,7 +49,7 @@ function UserSearch() {
       {/* this came from Github context */}
       {users.length > 0 && (
         <div>
-          <button onClick={handleClear} className='btn btn-ghost btn-large'>
+          <button onClick={clearUsers} className='btn btn-ghost btn-large'>
             Clear
           </button>
         </div>
