@@ -88,6 +88,16 @@ function User() {
                 <div className='text-lg stat-value'>{location}</div>
               </div>
             )}
+            {blog && (
+              <div className='stat'>
+                <div className='stat-title text-md'>Website</div>
+                <div className='text-lg stat-value'>
+                  <a href={`https://${blog}`} target='_blank' rel='noreferrer'>
+                    {blog}
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
