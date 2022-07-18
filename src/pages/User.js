@@ -155,7 +155,7 @@ function User() {
             </div>
           </div>
         </div>
-        <RepoList />
+        <RepoList repos={repos} />
       </div>
     </>
   )
