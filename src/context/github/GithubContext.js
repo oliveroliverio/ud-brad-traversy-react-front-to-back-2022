@@ -8,6 +8,7 @@ const GithubContext = createContext()
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
+    repos: [],
     user: {},
     loading: false,
   }
@@ -63,14 +64,34 @@ export const GithubProvider = ({ children }) => {
   // create setLoading function since we'll use this in a few different places
   const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
+  // get user Repos
+  const getUserRepos = async (login) => {
+    setLoading()
+
+    const response = await fetch(`${GITHUB_URL}/search/users/${login}/repos`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    })
+
+    const repos = await response.json()
+
+    dispatch({
+      type: 'GET_REPOS',
+      payload: repos,
+    })
+  }
+
   return (
     <GithubContext.Provider
       value={{
         user: state.user,
         users: state.users,
         loading: state.loading,
+        repos: state.repos,
         searchUsers,
         getUser,
+        getUserRepos,
         clearUsers,
       }}
     >
