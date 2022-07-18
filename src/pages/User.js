@@ -12,7 +12,11 @@ function User() {
   useEffect(() => {
     getUser(params.login)
   }, [])
-  return <div>{user.login}</div>
+  return (
+    <>
+      <div>{user.login}</div>
+    </>
+  )
 }
 
 export default User
