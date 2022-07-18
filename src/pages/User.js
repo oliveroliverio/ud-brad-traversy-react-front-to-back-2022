@@ -45,7 +45,7 @@ function User() {
           </Link>
         </div>
 
-        <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
+        <div className='grid grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
           <div className='custom-card-image mb-6 md:mb-0'>
             <div className='rounded-lg shadow-xl card image-full'>
               <figure>
@@ -59,7 +59,7 @@ function User() {
           </div>
 
           {/* span two columns of the grid */}
-          <div className='col-span-2'></div>
+          <div className='col-span-3'></div>
           <div className='mb-6'>
             <h1 className='text-3xl card-title'>
               {name}
@@ -94,6 +94,20 @@ function User() {
                 <div className='text-lg stat-value'>
                   <a href={`https://${blog}`} target='_blank' rel='noreferrer'>
                     {blog}
+                  </a>
+                </div>
+              </div>
+            )}
+            {twitter_username && (
+              <div className='stat'>
+                <div className='stat-title text-md'>Twitter</div>
+                <div className='text-lg stat-value'>
+                  <a
+                    href={`https://twitter.com/${twitter_username}`}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {twitter_username}
                   </a>
                 </div>
               </div>
