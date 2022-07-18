@@ -44,16 +44,41 @@ function User() {
             Back to search
           </Link>
         </div>
+
         <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
           <div className='custom-card-image mb-6 md:mb-0'>
             <div className='rounded-lg shadow-xl card image-full'>
               <figure>
-                <img src={avatar_url} alt='pic' />
+                <img src={avatar_url} alt='' />
               </figure>
               <div className='card-body justify-center'>
                 <h2 className='card-title mb-0'>{name}</h2>
                 <p className='flex-grow'>{login}</p>
               </div>
+            </div>
+          </div>
+
+          {/* span two columns of the grid */}
+          <div className='col-span-2'></div>
+          <div className='mb-6'>
+            <h1 className='text-3xl card-title'>
+              {name}
+              <div className='ml-2 mr-1 badge badge-success'>{type}</div>
+              {hireable && (
+                <div className='mx-1 badge badge-info'>Hireable</div>
+              )}
+            </h1>
+            <p>{bio}</p>
+            <div className='mt-4 card-actions'>
+              {/* because <a> is outside link need to add the "to" and "rel" attributes to mitigate security risks*/}
+              <a
+                href={html_url}
+                target='_blank'
+                rel='noreferrer'
+                className='btn btn-outline'
+              >
+                Visit Github Profile
+              </a>
             </div>
           </div>
         </div>
