@@ -3,6 +3,7 @@ import { useEffect, useContext } from 'react'
 import GithubContext from '../context/github/GithubContext'
 import { useParams, Link } from 'react-router-dom'
 import Spinner from '../components/layout/Spinner'
+import RepoList from '../components/repos/RepoList'
 
 import React from 'react'
 
@@ -152,6 +153,7 @@ function User() {
             </div>
           </div>
         </div>
+        <RepoList />
       </div>
     </>
   )
