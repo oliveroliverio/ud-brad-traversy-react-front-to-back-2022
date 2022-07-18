@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom'
 import React from 'react'
 
 function User() {
-  const { getUser } = useContext(GithubContext)
+  const { getUser, user } = useContext(GithubContext)
 
   const params = useParams()
 
   useEffect(() => {
     getUser(params.login)
   }, [])
-  return <div>USER</div>
+  return <div>{user.login}</div>
 }
 
 export default User
