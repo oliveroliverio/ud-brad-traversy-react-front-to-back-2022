@@ -68,17 +68,17 @@ export const GithubProvider = ({ children }) => {
   const getUserRepos = async (login) => {
     setLoading()
 
-    const response = await fetch(`${GITHUB_URL}/search/users/${login}/repos`, {
+    const response = await fetch(`${GITHUB_URL}/users/${login}/repos`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
     })
 
-    const repos = await response.json()
+    const data = await response.json()
 
     dispatch({
       type: 'GET_REPOS',
-      payload: repos,
+      payload: data,
     })
   }
 

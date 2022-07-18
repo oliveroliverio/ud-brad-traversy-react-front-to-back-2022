@@ -8,12 +8,14 @@ import RepoList from '../components/repos/RepoList'
 import React from 'react'
 
 function User() {
-  const { getUser, user, loading } = useContext(GithubContext)
+  const { getUser, user, loading, getUserRepos, repos } =
+    useContext(GithubContext)
 
   const params = useParams()
 
   useEffect(() => {
     getUser(params.login)
+    getUserRepos(params.login)
   }, [])
 
   const {
