@@ -23,7 +23,7 @@ function User() {
       dispatch({ type: 'GET_REPOS', payload: userRepoData })
     }
     getUserData()
-  }, [])
+  }, [dispatch, params.login])
 
   const {
     name,
