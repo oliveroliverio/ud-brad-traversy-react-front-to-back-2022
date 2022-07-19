@@ -3,6 +3,8 @@ import GithubContext from '../../context/github/GithubContext'
 import AlertContext from '../../context/alert/AlertContext'
 import { searchUsers } from '../../context/github/GithubActions'
 
+//stopped at lec 67
+
 function UserSearch() {
   const [text, setText] = useState('')
 
