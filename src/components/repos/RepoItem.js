@@ -23,8 +23,17 @@ function RepoItem({ key, repo }) {
         <p className='mb-3'>{description}</p>
         <div>
           {/* watchers, so use eye icon */}
-          <div className='mr-2 badge badge-info badge-lg'>
+          <div className='mr-2 badge badge-success badge-lg'>
             <FaEye className='mr-2' /> {watchers_count}
+          </div>
+          <div className='mr-2 badge badge-info badge-lg'>
+            <FaStar className='mr-2' /> {stargazers_count}
+          </div>
+          <div className='mr-2 badge badge-error badge-lg'>
+            <FaInfo className='mr-2' /> {open_issues}
+          </div>
+          <div className='mr-2 badge badge-warning badge-lg'>
+            <FaUtensils className='mr-2' /> {forks}
           </div>
         </div>
       </div>
