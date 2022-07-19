@@ -26,20 +26,3 @@ export const GithubProvider = ({ children }) => {
 }
 
 export default GithubContext
-
-// // get initial users (testing purposes)
-// const fetchUsers = async () => {
-//   setLoading()
-//   const response = await fetch(`${GITHUB_URL}/users`, {
-//     headers: {
-//       Authorization: `token ${GITHUB_TOKEN}`,
-//     },
-//   })
-
-//   const data = await response.json()
-
-//   dispatch({
-//     type: 'GET_USERS',
-//     payload: data,
-//   })
-// }
