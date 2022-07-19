@@ -1,14 +1,14 @@
 import { useState, useContext } from 'react'
 import GithubContext from '../../context/github/GithubContext'
 import AlertContext from '../../context/alert/AlertContext'
-import { searchUsers } from '../../context/github/GithubActions'
+import { searchUsers, clearUsers } from '../../context/github/GithubActions'
 
 //stopped at lec 67
 
 function UserSearch() {
   const [text, setText] = useState('')
 
-  const { users, clearUsers, dispatch } = useContext(GithubContext)
+  const { users, dispatch } = useContext(GithubContext)
   const { setAlert } = useContext(AlertContext)
 
   const handleChange = (e) => setText(e.target.value)
@@ -54,7 +54,10 @@ function UserSearch() {
       {/* this came from Github context */}
       {users.length > 0 && (
         <div>
-          <button onClick={clearUsers} className='btn btn-ghost btn-large'>
+          <button
+            onClick={() => dispatch({ type: 'CLEAR_USERS' })}
+            className='btn btn-ghost btn-large'
+          >
             Clear
           </button>
         </div>
