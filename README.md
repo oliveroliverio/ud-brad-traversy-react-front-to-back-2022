@@ -1,2 +1,1 @@
-# github finder repo
-https://github.com/bradtraversy/github-finder-app
+# [House Market Place Repo](https://github.com/bradtraversy/house-marketplace)
