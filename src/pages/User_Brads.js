@@ -6,6 +6,8 @@ import RepoList from '../components/repos/RepoList'
 import GithubContext from '../context/github/GithubContext'
 import { getUserAndRepos } from '../context/github/GithubActions'
 
+// BRAD's
+
 function User() {
   const { user, loading, repos, dispatch } = useContext(GithubContext)
 
@@ -38,9 +40,21 @@ function User() {
     hireable,
   } = user
 
-  if (loading) return <Spinner />
+  if (loading) {
+    return <Spinner />
+  }
+
+  // NOTE: check for valid url to users website
 
   const websiteUrl = blog?.startsWith('http') ? blog : 'https://' + blog
+
+  // NOTE: code here has been fixed so that stats no longer show scroll bar on
+  // mobile / small devices
+  // https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768968#questions/16902278
+
+  // NOTE: if you are having problems with the name and login showing at the top
+  // of the image then you need the className='flex-grow-0' on the <p> tag
+  // default styling on <p> in daisyUI now has flex-grow-1
 
   return (
     <>
@@ -120,6 +134,7 @@ function User() {
             </div>
           </div>
         </div>
+
         <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
           <div className='grid grid-cols-1 md:grid-cols-3'>
             <div className='stat'>
@@ -141,6 +156,7 @@ function User() {
                 {following}
               </div>
             </div>
+
             <div className='stat'>
               <div className='stat-figure text-secondary'>
                 <FaCodepen className='text-3xl md:text-5xl' />
@@ -150,6 +166,7 @@ function User() {
                 {public_repos}
               </div>
             </div>
+
             <div className='stat'>
               <div className='stat-figure text-secondary'>
                 <FaStore className='text-3xl md:text-5xl' />
@@ -161,6 +178,7 @@ function User() {
             </div>
           </div>
         </div>
+
         <RepoList repos={repos} />
       </div>
     </>
