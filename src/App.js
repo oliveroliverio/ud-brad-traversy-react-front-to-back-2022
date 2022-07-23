@@ -7,7 +7,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ForgotPassword from './pages/ForgotPassword'
 
-//start on lec 83. navbar component
+//start on lec 84.
 
 function App() {
   return (
