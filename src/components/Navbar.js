@@ -10,7 +10,7 @@ function Navbar() {
   // dynamically change icon color depending on what page user is on
   const pathMatchRoute = (route) => {
     // if user is on localhost:3000/profile then location.pathname equals that
-    if (route == location.pathname) {
+    if (route === location.pathname) {
       return true
     }
   }
@@ -26,7 +26,15 @@ function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Explore</p>
+            <p
+              className={
+                pathMatchRoute('/')
+                  ? 'navbarListItemNameActive'
+                  : 'navbarListItemName'
+              }
+            >
+              Explore
+            </p>
           </li>
           <li className='navbarListItem' onClick={() => navigate('/offers')}>
             <OfferIcon
@@ -34,7 +42,15 @@ function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Offer</p>
+            <p
+              className={
+                pathMatchRoute('/offers')
+                  ? 'navbarListItemNameActive'
+                  : 'navbarListItemName'
+              }
+            >
+              Offer
+            </p>
           </li>
           <li className='navbarListItem' onClick={() => navigate('/profile')}>
             <PersonOutlineIcon
@@ -42,7 +58,15 @@ function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Profile</p>
+            <p
+              className={
+                pathMatchRoute('/profile')
+                  ? 'navbarListItemNameActive'
+                  : 'navbarListItemName'
+              }
+            >
+              Profile
+            </p>
           </li>
         </ul>
       </nav>
